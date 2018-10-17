@@ -16,10 +16,20 @@ def get_page_source():
 def get_page_data():
     with open('page_source.html','r', encoding='utf-8') as f:
         str = f.read()
-        print(type(str))
 
     doc = pq(str)
-    print(type(doc))
+    # print(doc('.ListColumnClass15 .listtddate15').text())
+
+    columns = doc('.ListColumnClass15').items()
+    swap = {'date' ,'appendix', 'title'}
+    swaps = [swap]
+    for column in columns:
+        print(column('.listtddate15').text())
+        swaps.append()
+        print(column('[href]').attr('href'))
+        print(column('[href]').text())
+    print(swaps)
+    # print(doc('.ListColumnClass15 [href]').attr('target'))
 
 def main():
     get_page_data()
