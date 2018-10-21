@@ -4,7 +4,7 @@ import csv
 
 def get_page_source():
     browser = webdriver.Chrome('C:\\program_in_PATH\\chromedriver.exe')
-    browser.get('http://samr.cfda.gov.cn/WS01/CL1129/')
+    browser.get('http://samr.cfda.gov.cn/WS01/CL1129/index.html')
     #print(browser.page_source)
     page_source = browser.page_source
     browser.close()
@@ -28,7 +28,7 @@ def get_page_data():
         # print(column('.listtddate15').text())
         swaplet['date']=column('.listtddate15').text()
         # print(column('[href]').attr('href'))
-        swaplet['appendix']=column('[href]').attr('href')
+        swaplet['appendix']=('http://samr.cfda.gov.cn/WS01'+column('[href]').attr('href')[2:])
         # print(column('[href]').text())
         swaplet['title']=column('[href]').text()
         swaps.append(swaplet)
